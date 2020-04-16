@@ -1,6 +1,8 @@
 # Swap and Paste
 
-Sometimes it's useful to be able two swap two pieces of code. This extension automatically copies anything selected when pasting and inserts it in the paste buffer.
+Sometimes it's useful to be able to swap two pieces of code. This extension simply copies anything selected when pasting and inserts it in the paste buffer. *Note: Only works with single selections - multiple selections would get too complicated!*
+
+Overrides the default cut, copy and paste key bindings. If you want to use in conjunction with another clipboard extension, set the appropriate commands as per the configuration below.
 
 ## Installing
 
@@ -20,10 +22,14 @@ The source code is available on GitHub [here](https://github.com/Gruntfuggly/swa
 
 If there is no selection when pasting, this command is executed instead. This allows you to use an alternative clipboard extension if required. Defaults to the standard `editor.action.clipboardPasteAction`.
 
+`swap-and-paste.copyCommand`
+
+When copying the selected text, the extension will call this command after copying the selection to it's own clipboard. Defaults to the standard `editor.action.clipboardCopyAction`.
+
 `swap-and-paste.cutCommand`
 
-When cutting the selected text, use this command. Defaults to the standard `editor.action.clipboardCutAction`.
+When cutting the selected text, the extension will call this command after copying the selection to it's own clipboard. Defaults to the standard `editor.action.clipboardCutAction`.
 
 ## Credits
 
-Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from <www.flaticon.com>.
+Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)

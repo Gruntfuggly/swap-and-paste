@@ -1,44 +1,70 @@
 
 var vscode = require( 'vscode' );
 
+var clipboard;
+
 function activate( context )
 {
-    var disposable = vscode.commands.registerCommand( 'swap-and-paste.paste', function()
+    context.subscriptions.push( vscode.commands.registerCommand( 'swap-and-paste.paste', function()
     {
         var pasteCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).pasteCommand;
-        var cutCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).cutCommand;
+        var copyCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).copyCommand;
 
         var editor = vscode.window.activeTextEditor;
         var selection = editor.selection;
 
         var s = selection.start;
         var e = selection.end;
-        var r = selection.isReversed;
-
-        var originalStartOffset = editor.document.offsetAt( s );
-        var originalEndOffset = editor.document.offsetAt( e );
 
         var hasSelection = s.line !== e.line || s.character !== e.character;
 
         if( hasSelection && editor.selections.length === 1 )
         {
-            editor.selection = new vscode.Selection( s, s );
-
-            vscode.commands.executeCommand( pasteCommand ).then( function()
+            var currentClipboard = clipboard;
+            copyToClipboard();
+            vscode.commands.executeCommand( copyCommand ).then( function()
             {
-                var offset = editor.document.offsetAt( editor.selection.end ) - originalStartOffset;
-                editor.selection = new vscode.Selection( editor.document.positionAt( originalStartOffset + offset ), editor.document.positionAt( originalEndOffset + offset ) );
-
-                vscode.commands.executeCommand( cutCommand );
+                editor.edit( function( editBuilder )
+                {
+                    editBuilder.replace( editor.selection, currentClipboard );
+                }, { undoStopAfter: false, undoStopBefore: false } );
             } );
         }
         else
         {
             vscode.commands.executeCommand( pasteCommand );
         }
-    } );
+    } ) );
 
-    context.subscriptions.push( disposable );
+    function copyToClipboard()
+    {
+        var editor = vscode.window.activeTextEditor;
+        var selection = editor.selection;
+
+        var s = selection.start;
+        var e = selection.end;
+
+        var hasSelection = s.line !== e.line || s.character !== e.character;
+
+        if( hasSelection && editor.selections.length === 1 )
+        {
+            clipboard = editor.document.getText( new vscode.Range( s, e ) );
+        }
+    }
+
+    context.subscriptions.push( vscode.commands.registerCommand( 'swap-and-paste.copy', function()
+    {
+        copyToClipboard();
+        var copyCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).copyCommand;
+        vscode.commands.executeCommand( copyCommand );
+    } ) );
+
+    context.subscriptions.push( vscode.commands.registerCommand( 'swap-and-paste.cut', function()
+    {
+        copyToClipboard();
+        var cutCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).cutCommand;
+        vscode.commands.executeCommand( cutCommand );
+    } ) );
 }
 exports.activate = activate;
 

@@ -1,7 +1,7 @@
 {
     "name": "swap-and-paste",
     "displayName": "Swap and Paste",
-    "description": "Copy and selected text before pasting",
+    "description": "Copy the selected text before pasting",
     "icon": "icon.png",
     "version": "0.0.1",
     "publisher": "Gruntfuggly",
@@ -21,7 +21,15 @@
         "commands": [
             {
                 "command": "swap-and-paste.paste",
-                "title": "Swap and Paste"
+                "title": "Swap and Paste: Paste"
+            },
+            {
+                "command": "swap-and-paste.copy",
+                "title": "Swap and Paste: Copy"
+            },
+            {
+                "command": "swap-and-paste.cut",
+                "title": "Swap and Paste: Cut"
             }
         ],
         "keybindings": [
@@ -29,6 +37,18 @@
                 "command": "swap-and-paste.paste",
                 "key": "ctrl+v",
                 "mac": "cmd+v",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "command": "swap-and-paste.copy",
+                "key": "ctrl+c",
+                "mac": "cmd+c",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "command": "swap-and-paste.cut",
+                "key": "ctrl+x",
+                "mac": "cmd+x",
                 "when": "editorTextFocus && !editorReadonly"
             }
         ],
@@ -38,8 +58,13 @@
             "properties": {
                 "swap-and-paste.pasteCommand": {
                     "type": "string",
-                    "markdownDescription": "The command to use if there is no current selection",
+                    "markdownDescription": "The command to use if there is no current selection when pasting",
                     "default": "editor.action.clipboardPasteAction"
+                },
+                "swap-and-paste.copyCommand": {
+                    "type": "string",
+                    "markdownDescription": "The command to use to copy the selection",
+                    "default": "editor.action.clipboardCopyAction"
                 },
                 "swap-and-paste.cutCommand": {
                     "type": "string",
