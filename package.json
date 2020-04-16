@@ -1,0 +1,55 @@
+{
+    "name": "swap-and-paste",
+    "displayName": "Swap and Paste",
+    "description": "Copy and selected text before pasting",
+    "icon": "icon.png",
+    "version": "0.0.1",
+    "publisher": "Gruntfuggly",
+    "repository": "https://github.com/Gruntfuggly/swap-and-paste",
+    "license": "MIT",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "*"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "swap-and-paste.paste",
+                "title": "Swap and Paste"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "swap-and-paste.paste",
+                "key": "ctrl+v",
+                "mac": "cmd+v",
+                "when": "editorTextFocus && !editorReadonly"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Swap and Paste",
+            "properties": {
+                "swap-and-paste.pasteCommand": {
+                    "type": "string",
+                    "markdownDescription": "The command to use if there is no current selection",
+                    "default": "editor.action.clipboardPasteAction"
+                },
+                "swap-and-paste.cutCommand": {
+                    "type": "string",
+                    "markdownDescription": "The command to use to cut the selection",
+                    "default": "editor.action.clipboardCutAction"
+                }
+            }
+        }
+    },
+    "devDependencies": {
+        "vscode": "^1.1.36"
+    }
+}
