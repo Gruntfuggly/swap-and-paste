@@ -14,7 +14,9 @@
         "Other"
     ],
     "activationEvents": [
-        "*"
+        "onCommand:swap-and-paste.copy",
+        "onCommand:swap-and-paste.cut",
+        "onCommand:swap-and-paste.paste"
     ],
     "main": "./extension",
     "contributes": {
