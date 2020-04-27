@@ -3,7 +3,7 @@
     "displayName": "Swap and Paste",
     "description": "Copy the selected text before pasting",
     "icon": "icon.png",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "Gruntfuggly",
     "repository": "https://github.com/Gruntfuggly/swap-and-paste",
     "license": "MIT",
