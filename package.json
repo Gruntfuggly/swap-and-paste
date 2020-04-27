@@ -72,11 +72,21 @@
                     "type": "string",
                     "markdownDescription": "The command to use to cut the selection",
                     "default": "editor.action.clipboardCutAction"
+                },
+                "swap-and-paste.retainThroughDuplicateSelections": {
+                    "type": "boolean",
+                    "markdownDescription": "If true, and the same text is selected subsequently when pasting, the originally selected text is inserted again. This allows multiple replacements while still keeping the originally selected text.",
+                    "default": true
                 }
             }
         }
     },
     "devDependencies": {
         "vscode": "^1.1.36"
+    },
+    "__metadata": {
+        "id": "d91c4db7-25f6-443f-986f-64346683b369",
+        "publisherDisplayName": "Gruntfuggly",
+        "publisherId": "d4906d2e-f2ee-492d-9c7c-02b6160599ec"
     }
 }

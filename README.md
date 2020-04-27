@@ -30,6 +30,10 @@ When copying the selected text, the extension will call this command after copyi
 
 When cutting the selected text, the extension will call this command after copying the selection to it's own clipboard. Defaults to the standard `editor.action.clipboardCutAction`.
 
+`swap-and-paste.retainThroughDuplicateSelections`
+
+Normally, if *xxx* is copied and then pasted when *yyy* is selected, *yyy* is copied into the clipboard for the next paste. This is problematic if you want to do multiple replacements, so if *yyy* is selected subsequently again, *xxx* will be repasted. If you want to **always** swap *yyy* for *xxx* regardless of the previous paste contents, then set this false.
+
 ## Credits
 
 Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)
