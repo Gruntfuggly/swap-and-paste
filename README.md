@@ -34,6 +34,10 @@ When cutting the selected text, the extension will call this command after copyi
 
 Normally, if *xxx* is copied and then pasted when *yyy* is selected, *yyy* is copied into the clipboard for the next paste. This is problematic if you want to do multiple replacements, so if *yyy* is selected subsequently again, *xxx* will be repasted. If you want to **always** swap *yyy* for *xxx* regardless of the previous paste contents, then set this false.
 
+`swap-and-paste.debug`
+
+Set to true to create a debug log in the Output panel.
+
 ## Credits
 
 Icon made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com)

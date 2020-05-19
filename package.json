@@ -77,6 +77,11 @@
                     "type": "boolean",
                     "markdownDescription": "If true, and the same text is selected subsequently when pasting, the originally selected text is inserted again. This allows multiple replacements while still keeping the originally selected text.",
                     "default": true
+                },
+                "swap-and-paste.debug": {
+                    "type": "boolean",
+                    "markdownDescription": "Create a debug channel in the output panel.",
+                    "default": false
                 }
             }
         }
