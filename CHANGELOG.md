@@ -1,5 +1,8 @@
 # Swap and Paste Change Log
 
+## v0.0.3 - 2020-05-19
+
+- Handle pasting from outside VSCode properly
 - Move logging into a configurable output channel
 
 ## v0.0.2 - 2020-04-27
