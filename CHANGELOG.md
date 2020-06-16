@@ -1,5 +1,7 @@
 # Swap and Paste Change Log
 
+## v0.0.4 = 2020-06-16
+
 - Allow undo to revert the selection and allow undo command to be configured
 
 ## v0.0.3 - 2020-05-19
