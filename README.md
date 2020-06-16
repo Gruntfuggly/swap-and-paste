@@ -2,7 +2,7 @@
 
 Sometimes it's useful to be able to swap two pieces of code. This extension simply copies anything selected when pasting and inserts it in the paste buffer. *Note: Only works with single selections - multiple selections would get too complicated!*
 
-Overrides the default cut, copy and paste key bindings. If you want to use in conjunction with another clipboard extension, set the appropriate commands as per the configuration below.
+Overrides the default cut, copy, paste and undo key bindings. If you want to use in conjunction with another clipboard extension, set the appropriate commands as per the configuration below.
 
 ## Installing
 
@@ -29,6 +29,10 @@ When copying the selected text, the extension will call this command after copyi
 `swap-and-paste.cutCommand`
 
 When cutting the selected text, the extension will call this command after copying the selection to it's own clipboard. Defaults to the standard `editor.action.clipboardCutAction`.
+
+`swap-and-paste.undoCommand`
+
+If you paste accidentally, undo will swap the selections back. The default is to call the standard undo command afterwards, but this can be overridden using this setting if required.
 
 `swap-and-paste.retainThroughDuplicateSelections`
 

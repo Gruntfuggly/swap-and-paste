@@ -135,6 +135,20 @@ function activate( context )
         vscode.commands.executeCommand( cutCommand );
     } ) );
 
+    context.subscriptions.push( vscode.commands.registerCommand( 'swap-and-paste.undo', function()
+    {
+        debug( "swap-and-paste.undo()" );
+        if( previousClipboard )
+        {
+            clipboard = previousClipboard;
+            vscode.env.clipboard.writeText( previousClipboard );
+            previousClipboard = undefined;
+        }
+        var undoCommand = vscode.workspace.getConfiguration( 'swap-and-paste' ).undoCommand;
+        debug( undoCommand );
+        vscode.commands.executeCommand( undoCommand );
+    } ) );
+
 
     context.subscriptions.push( vscode.workspace.onDidChangeConfiguration( function( e )
     {

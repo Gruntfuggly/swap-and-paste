@@ -16,7 +16,8 @@
     "activationEvents": [
         "onCommand:swap-and-paste.copy",
         "onCommand:swap-and-paste.cut",
-        "onCommand:swap-and-paste.paste"
+        "onCommand:swap-and-paste.paste",
+        "onCommand:swap-and-paste.undo"
     ],
     "main": "./extension",
     "contributes": {
@@ -32,6 +33,10 @@
             {
                 "command": "swap-and-paste.cut",
                 "title": "Swap and Paste: Cut"
+            },
+            {
+                "command": "swap-and-paste.undo",
+                "title": "Swap and Paste: Undo"
             }
         ],
         "keybindings": [
@@ -51,6 +56,12 @@
                 "command": "swap-and-paste.cut",
                 "key": "ctrl+x",
                 "mac": "cmd+x",
+                "when": "editorTextFocus && !editorReadonly"
+            },
+            {
+                "command": "swap-and-paste.undo",
+                "key": "ctrl-z",
+                "mac": "cmd+z",
                 "when": "editorTextFocus && !editorReadonly"
             }
         ],
@@ -73,6 +84,11 @@
                     "markdownDescription": "The command to use to cut the selection",
                     "default": "editor.action.clipboardCutAction"
                 },
+                "swap-and-paste.undoCommand": {
+                    "type": "string",
+                    "markdownDescription": "The command to use to undo the last operation",
+                    "default": "undo"
+                },
                 "swap-and-paste.retainThroughDuplicateSelections": {
                     "type": "boolean",
                     "markdownDescription": "If true, and the same text is selected subsequently when pasting, the originally selected text is inserted again. This allows multiple replacements while still keeping the originally selected text.",
@@ -91,7 +107,7 @@
     },
     "__metadata": {
         "id": "d91c4db7-25f6-443f-986f-64346683b369",
-        "publisherDisplayName": "Gruntfuggly",
-        "publisherId": "d4906d2e-f2ee-492d-9c7c-02b6160599ec"
+        "publisherId": "d4906d2e-f2ee-492d-9c7c-02b6160599ec",
+        "publisherDisplayName": "Gruntfuggly"
     }
 }
